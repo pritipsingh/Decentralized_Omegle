@@ -9,14 +9,20 @@
     "deploy": "yarn build && npx thirdweb@latest upload dist"
   },
   "dependencies": {
+    "@huddle01/huddle01-client": "^0.0.10",
     "@thirdweb-dev/react": "^3",
     "@thirdweb-dev/sdk": "^3",
     "ethers": "^5.7.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
+    "react-router-dom": "^6.6.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^2",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4",
     "vite": "^3"
   }
 }
