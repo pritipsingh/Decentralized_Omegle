@@ -14,12 +14,13 @@ const PostCard = ({owner, description, handleclick}) => {
   const handleStream = async () => {
     
    
-    if(address !== owner && address){
+    if(address){
    
     navigate('/meeting');
+    setRoomID(owner)
     
     }else{
-      alert('Please connect your wallet')
+      alert('You need to connect first')
     }
     
    
@@ -34,19 +35,19 @@ const PostCard = ({owner, description, handleclick}) => {
 
       </div>
 
-      <div className="flex flex-row pl-[19px] items-between mb-[18px]">
+      <div className="flex flex-row pl-[19px] items-between mb-[18px]" onClick={handleStream}>
           <img src={profile} alt="tag" className="w-[17px] h-[17px] object-contain"/>
           <p className=" font-epilogue font-normal pl-[12px] text-[12px] text-[#b2b3bd] truncate">by <span className="text-[#b2b3bd]">{owner}</span></p>
           
            <AiFillVideoCamera className = 'w-[27px] pl-[8px] h-[19px] hover:bg-[#808191] rounded-[50px] object-contain text-[#b2b3bd]'
-           onClick={handleStream}
+           
            />
           
           
         </div>
   
 
-         { setRoomID(owner)  }
+         
     </div>
 
 

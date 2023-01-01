@@ -10,6 +10,7 @@ import PeerVideoAudioElem from "../components/PeerVideoAudioElem";
 import MeVideoElem from "../components/MeVideoElem";
 import CustomButton from '../components/CustomButton';
 import { useStateContext } from '../context';
+import {loader} from '../assets'
 
 const Meeting = ({roomID}) => {
   
@@ -17,22 +18,38 @@ const Meeting = ({roomID}) => {
   const peersKeys = useHuddleStore((state) => Object.keys(state.peers));
   const lobbyPeers = useHuddleStore((state) => state.lobbyPeers);
   const roomState = useHuddleStore((state) => state.roomState);
-  const { address} = useStateContext();
+  const { address, setRoomID} = useStateContext();
   
   // const [roomID, setRoomID] = useState('');
-  // const [room, setRoom] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
+  const [enableCam, setEnableCam] = useState(false);
   console.log('HERE', roomID)
   console.log('HERE', address)
+
+  const handleCamera = () => {
+    
+if(!enableCam){
+      huddleClient.enableWebcam();
+      setEnableCam(true)
+  }else{
+    huddleClient.disableWebcam()
+
+    setEnableCam(false)
+  }
+}
   
   const handleClick = async () => {
    
     
     try {
+      setisLoading(true);
       await huddleClient.join(roomID, {
         address: address,
         wallet: "",
         ens: "axit.eth",
       });
+      setisLoading(false)
+      (!roomID) && setRoomID(address);
       console.log(roomID)
       console.log("joined");
     } catch (error) {
@@ -45,6 +62,10 @@ const Meeting = ({roomID}) => {
   return (
     <HuddleClientProvider value={huddleClient}>
       <div className='flex flex-col justify-center  items-center w-full h-[50vh]'>
+      
+        {isLoading && (
+          <img src={loader} alt="loader" className="w-[100px] h-[100px] object-contain" />
+        )}
         <div className='card flex flex-row w-full rounded-[10px] p-[7px] border-2 justify-between h-full mt-[60px] justify-center gap-2'>
           
             {<MeVideoElem />}
@@ -65,18 +86,19 @@ const Meeting = ({roomID}) => {
         />}
         {  <CustomButton 
           btnType="button"
-          title='Enable Camera'
-          styles='bg-[#8c6dfd]'
-          handleClick={() => (huddleClient.enableWebcam())}
+          title={enableCam ? 'Disable Camera' : 'Enable Camera'}
+          styles={enableCam? 'bg-[red]' : 'bg-[#8c6dfd]'}
+          handleClick={handleCamera}
+           
           
         />}
-        {  <CustomButton 
+        {/* {  <CustomButton 
           btnType="button"
           title='Disable Camera'
           styles='bg-[#8c6dfd]'
           handleClick={() => huddleClient.disableWebcam()}
           
-        />}
+        />} */}
         {  <CustomButton 
           btnType="button"
           title='Allow User to Join'
