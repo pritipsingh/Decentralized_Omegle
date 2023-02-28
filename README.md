@@ -5,7 +5,15 @@ Smart-Contract Of The Project: https://github.com/pritipsingh/smart-contract_vid
 
 Working video: https://youtu.be/Wq1qMsdY3G0
 
+This is how you can write and post which gets stored on the blockchain
 ![WhatsApp Image 2023-01-02 at 17 59 00](https://user-images.githubusercontent.com/85965351/211151297-7737736c-0e7d-4c7f-bd4c-6f9d2c00dded.jpeg)
+
+<br>
+This is the decentralized video call (meeting room) powered by video call. (it is wallet to wallet vc) <br>
+
 ![WhatsApp Image 2023-01-02 at 18 02 27](https://user-images.githubusercontent.com/85965351/211151301-9ae49d2e-c383-4ad5-a9bf-235a632510a5.jpeg)
+
+<br>
+This is the post page where you can see all the posts and join the call if you find those topics interesting
 
 ![WhatsApp Image 2023-01-02 at 17 57 27](https://user-images.githubusercontent.com/85965351/211151314-3e38ba9c-d3f7-4c2c-ba9c-ae6d3d10010b.jpeg)
